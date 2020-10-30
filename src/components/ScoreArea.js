@@ -5,11 +5,11 @@ import TotalCorrect from './TotalCorrect';
 import TotalIncorrect from './TotalIncorrect';
 
 
-function ScoreArea() {
+function ScoreArea(props) {
     return (
-        <div>
-            <TotalCorrect />
-            <TotalIncorrect />
+        <div className="scoreWrap">
+            <TotalCorrect correct={props.correct}/>
+            <TotalIncorrect incorrect={props.incorrect}/>
         </div>
     )
 }

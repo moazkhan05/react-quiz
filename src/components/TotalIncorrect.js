@@ -1,11 +1,7 @@
 import React from 'react'
 
-function TotalIncorrect() {
-    return (
-        <div>
-            <h3>Incorrect</h3>
-        </div>
-    )
+function TotalIncorrect(props) {
+    return ( <h3 className="incorrect">Incorrect : {props.incorrect} </h3> )
 }
 
 export default TotalIncorrect

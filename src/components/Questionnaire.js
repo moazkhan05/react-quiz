@@ -10,19 +10,40 @@ import ScoreArea from './ScoreArea';
 export class Questionnaire extends Component {
     constructor(){
         super();
-        this.state=({
+        this.state={
             current:0,
             dataSet:dataSet,
             correct:0,
             incorrect:0,
-            isFinished:false
-        })
+            isFinished:false,
+        }
+
+        this.handleClick = this.handleClick.bind(this);
     }
+
+    handleClick(choice){
+        
+        if(choice == this.state.dataSet[this.state.current].correct )
+            this.setState({correct : this.state.correct +1});
+        else    
+            this.setState({incorrect : this.state.incorrect +1}); 
+            
+        if (this.state.current == this.state.dataSet.length-1 )
+            this.setState({ isFinished : true });
+        else
+            this.setState({ current : this.state.current +1 });
+               
+    }
+
     render() {
         return (
             <div>
-               <QuizArea />
-               <ScoreArea /> 
+               <QuizArea handleClick={this.handleClick}  
+                        isFinished={this.state.isFinished}
+                        correct={this.state.correct} 
+                        incorrect={this.state.incorrect}
+                        dataSet={this.state.dataSet[this.state.current]}/>
+               <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect}/> 
             </div>
         )
     }

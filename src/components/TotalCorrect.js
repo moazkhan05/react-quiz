@@ -1,10 +1,8 @@
 import React from 'react'
 
-function TotalCorrect() {
+function TotalCorrect(props) {
     return (
-        <div>
-            <h3>Correct</h3>
-        </div>
+            <h3 className="correct">Correct : {props.correct} </h3>
     )
 }
 
